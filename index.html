@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Welcome to the Attendance System</h1>
+
+    <!-- Admin Login Section -->
+    <div id="admin-login">
+        <h2>Admin Login</h2>
+        <form id="admin-login-form">
+            <input type="text" id="admin-username" placeholder="Admin Username" required>
+            <input type="password" id="admin-password" placeholder="Admin Password" required>
+            <button type="submit">Login as Admin</button>
+        </form>
+    </div>
+
+    <!-- Student Login Section -->
+    <div id="student-login">
+        <h2>Student Login</h2>
+        <form id="student-login-form">
+            <input type="text" id="student-username" placeholder="Student Username" required />
+            <input type="password" id="student-password" placeholder="Student Password" required />
+            <button type="submit">Login as Student</button>
+        </form>
+    </div>
+
+    <!-- Include Web3.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+    <!-- Include Login Script -->
+    <script src="js/login.js" type="module" defer></script>
+</body>
+</html>

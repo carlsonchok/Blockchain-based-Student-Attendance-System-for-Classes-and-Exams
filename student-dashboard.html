@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        #class-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        #class-list li {
+            padding: 5px;
+            background-color: #f1f1f1;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #verify-account-button {
+            background-color: #007bff;
+        }
+        #verify-account-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Dashboard</h1>
+
+    <h2>Your Enrolled Classes</h2>
+    <ul id="class-list"></ul>
+
+    <h2>Mark Attendance</h2>
+    <form id="attendance-form">
+        <label for="class-select">Select a class:</label>
+        <select id="class-select" required>
+            <option value="">Select a class</option>
+        </select>
+        <button type="submit">Mark Attendance</button>
+    </form>
+
+    <!-- Verify account section -->
+    <h2>Verify Your Account</h2>
+    <p>Before you can mark your attendance, you need to verify your account by paying a small fee.</p>
+    <button id="verify-account-button">Verify Account (0.01 ETH)</button>
+
+    <!-- Face Camera Section -->
+    <h2>Face Camera</h2>
+    <div id="camera-container">
+        <video id="video" autoplay></video>
+        <button id="capture-button">Capture Image</button>
+    </div>
+
+    <!-- Include Web3.js from the CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="js/student-dashboard.js" type="module" defer></script>
+    <script>
+        // JavaScript for Face Camera
+        const videoElement = document.getElementById("video");
+        const captureButton = document.getElementById("capture-button");
+
+        // Access the user's camera
+        async function startCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                videoElement.srcObject = stream; // Show the video stream in the <video> element
+            } catch (error) {
+                console.error("Error accessing the camera:", error);
+                alert("Unable to access the camera. Please check your device settings.");
+            }
+        }
+
+        // Start the camera on page load
+        window.addEventListener("load", startCamera);
+
+        // Capture the image
+        captureButton.addEventListener("click", () => {
+            alert("Image scan successful!"); // Show the success popup
+        });
+    </script>
+</body>
+</html>
